@@ -1,0 +1,53 @@
+extends layout
+
+block content
+    h1 WorkshopForm
+    form(method='POST',action='/workshop/workshopconform')
+        div.form-group
+            label Organized by:
+            input.form-control(name='organizer',type='text')
+        div.form-group
+            label Date:
+            input.form-control(name='date',type='date',max=yy + "-" + mm + "-" + dd)
+        div.form-group
+            label Number of days seminar was attended:
+            input.form-control(name='day',type='number')
+        div.form-group
+            label Subject:
+            textarea.form-control(name='subject',type='text')
+        div.form-group
+            label Number of count:
+            input.form-control(name='count',type='number')
+        .form-group
+            select(name='s1', multiple='')
+                option(value='f') FE
+                option(value='s') SE
+                option(value='t') TE
+                option(value='b') BE
+        div.form-group
+            label.radio-inline
+                input(type='radio', name='r2' ,value=1)
+                | internatioal
+            label.radio-inline
+                input(type='radio', name='r2',value=2)
+                | National
+            label.radio-inline
+                input(type='radio', name='r2',value=3)
+                | State
+            label.radio-inline
+                input(type='radio', name='r2',value=4)
+                | University
+            label.radio-inline
+                input(type='radio', name='r2',value=5)
+                | Local/College level
+        div.form-group
+            label PO:
+            input.form-control(name='po',type='text')
+        div.form-group
+            label PSO:
+            input.form-control(name='pso',type='text')
+        div.form-group
+            label Venue:
+            textarea.form-control(name='place',type='text')
+        br
+        input.btn-primary(type='submit',value='Submit')

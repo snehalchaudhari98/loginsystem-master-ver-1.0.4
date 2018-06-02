@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    h1 Conference Conducted
+    form(method='POST',action='/conference/conferenceform')
+        div.form-group
+            label Organized at:
+            input.form-control(name='organizer',type='text')
+        div.form-group
+            label Date:
+            input.form-control(name='date',type='date',max=yy + "-" + mm + "-" + dd)
+        div.form-group
+            label Number of count:
+            input.form-control(name='count',type='number')
+        div.form-group
+            label Subject:
+            textarea.form-control(name='subject',type='text')
+            br
+        div.form-group
+            label PO:
+            input.form-control(name='po',type='text')
+        div.form-group
+            label PSO:
+            input.form-control(name='pso',type='text')
+        br
+        input.btn-primary(type='submit',value='Submit')

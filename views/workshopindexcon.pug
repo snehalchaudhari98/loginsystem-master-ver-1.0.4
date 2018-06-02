@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    h1 ALL Workshops
+    ul.list-group
+        each workshop, i in workshops
+            li.list-group-item
+                a(href="/workshop/cc/"+ workshop._id)=workshop.organizer

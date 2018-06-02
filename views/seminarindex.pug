@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    h1 ALL Seminar
+    ul.list-group
+        each seminar, i in seminars
+            li.list-group-item
+                a(href="/seminar/aa/"+ seminar._id)=seminar.subject

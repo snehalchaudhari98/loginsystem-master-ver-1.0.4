@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    h1= title
+    ul.list-group
+        each guest, i in guests
+            li.list-group-item
+                a(href="/guest/cc/"+ guest.id)=guest.organizer

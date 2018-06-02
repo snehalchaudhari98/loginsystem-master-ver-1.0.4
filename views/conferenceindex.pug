@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    h1 ALL conference Conducted
+    ul.list-group
+        each conference, i in conferences
+            li.list-group-item
+                a(href="/conference/"+ conference._id)=conference.subject

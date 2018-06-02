@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    h1 ALL Exams Conducted
+    ul.list-group
+        each exam, i in exams
+            li.list-group-item
+                a(href="/exam/"+ exam._id)=exam.subject

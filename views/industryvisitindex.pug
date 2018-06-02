@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    h1 ALL Industrial Visit
+    ul.list-group
+        each industry, i in industryvisits
+            li.list-group-item
+                a(href="/industryvisit/"+ industry._id)=industry.organizer

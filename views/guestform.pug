@@ -1,0 +1,182 @@
+html
+    head
+        link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
+        //link(rel='stylesheet', href='/stylesheets/style.css')
+        nav.navbar.navbar-inverse
+            .container
+                .navbar-header
+                    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    //a.navbar-brand(href='/users/login') PICT
+                    nav.navbar-brand PICT
+                #navbar.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        if user
+                            li
+                                a(href='/sidebar') Home
+                            li
+                                a(href='/add') add article
+                    ul.nav.navbar-nav.navbar-right
+                        if user
+                            li
+                                a(href='/users/logout') Logout
+                        else
+                            li
+                                a(href='/users/register') Register
+                            li
+                                a(href='/users/login') Login
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        style.
+            * {box-sizing: padding-box}
+            /* Set height of body and the document to 100% */
+            body, html {
+                height: 120%;
+                margin: 0;
+                font-family: Arial;
+            }
+            /* Style tab links */
+            .tablink {
+                background-color: #555;
+                color: black;
+                top-margin:200px;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 14px 16px;
+                font-size: 17px;
+                width: 50%;
+            }
+            .tablink:hover {
+                background-color: #777;
+            }
+            /* Style the tab content (and add height:100% for full page content) */
+            .tabcontent {
+                color: black;
+                display: none;
+                padding: 100px 20px;
+                height: 120%;
+            }
+            #Conducted {background-color: skyblue;}
+            #Attended {background-color: coral;}
+    body
+        button.tablink(onclick="openPage('Conducted', this, 'skyblue')") Conducted
+        button#defaultOpen.tablink(onclick="openPage('Attended', this, 'coral')") Attended
+        #Conducted.tabcontent
+            GuestForm
+            form(method='POST',action='/guest/guestconform')
+                div.form-group
+                    label Organized by:
+                    input.form-control(name='organizer',type='text')
+                div.form-group
+                    label Date:
+                    input.form-control(name='date',type='date',max=yy + "-" + mm + "-" + dd)
+                div.form-group
+                    label Number of days Guest lecture was attended:
+                    input.form-control(name='day',type='number')
+                div.form-group
+                    label Subject:
+                    textarea.form-control(name='subject',type='text')
+                div.form-group
+                    label Number of count:
+                    input.form-control(name='count',type='number')
+                    br
+                    label Select list:
+                div.form-group
+                    select(name='s3', size='1' , multiple='')
+                        option(value='f') FIRST YEAR
+                        option(value='s') SECOND YEAR
+                        option(value='t') THIRD YEAR
+                        option(value='b') FOURTH YEAR
+                    br
+                    label Category:
+                div.form-group
+                    label.radio-inline
+                        input(type='radio', name='r4' ,value=1)
+                        | internatioal
+                    label.radio-inline
+                        input(type='radio', name='r4',value=2)
+                        | National
+                    label.radio-inline
+                        input(type='radio', name='r4',value=3)
+                        | State
+                    label.radio-inline
+                        input(type='radio', name='r4',value=4)
+                        | University
+                    label.radio-inline
+                        input(type='radio', name='r4',value=5)
+                        | Local/College level
+                div.form-group
+                    label PO:
+                    input.form-control(name='po',type='text')
+                div.form-group
+                    label PSO:
+                    input.form-control(name='pso',type='text')
+                div.form-group
+                    label Venue:
+                    textarea.form-control(name='place',type='text')
+                br
+                input.btn-primary(type='submit',value='Submit')
+        #Attended.tabcontent
+            GuestForm
+            form(method='POST',action='/guest/guestattform')
+                div.form-group
+                    label Organized by:
+                    input.form-control(name='organizer',type='text')
+                div.form-group
+                    label Date:
+                    input.form-control(name='date',type='date',max=yy + "-" + mm + "-" + dd)
+                div.form-group
+                    label Number of days guest lecture was attended:
+                    input.form-control(name='day',type='number')
+                div.form-group
+                    label Subject:
+                    textarea.form-control(name='subject',type='text')
+                    br
+                    label Category:
+                div.form-group
+                    label.radio-inline
+                        input(type='radio', name='r4' ,value=1)
+                        | internatioal
+                    label.radio-inline
+                        input(type='radio', name='r4',value=2)
+                        | National
+                    label.radio-inline
+                        input(type='radio', name='r4',value=3)
+                        | State
+                    label.radio-inline
+                        input(type='radio', name='r4',value=4)
+                        | University
+                    label.radio-inline
+                        input(type='radio', name='r4',value=5)
+                        | Local/College level
+                div.form-group
+                    label PO:
+                    input.form-control(name='po',type='text')
+                div.form-group
+                    label PSO:
+                    input.form-control(name='pso',type='text')
+                div.form-group
+                    label Venue:
+                    textarea.form-control(name='place',type='text')
+                br
+                input.btn-primary(type='submit',value='Submit')
+        script.
+            function openPage(pageName,elmnt,color) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablink");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].style.backgroundColor = "";
+                }
+                document.getElementById(pageName).style.display = "block";
+                elmnt.style.backgroundColor = color;
+            }
+            // Get the element with id="defaultOpen" and click on it
+            document.getElementById("defaultOpen").click();
